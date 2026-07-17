@@ -1,5 +1,5 @@
 {
-  "id": "ecommerce-koubo-3ref-video-ltx-ui",
+  "id": "ecommerce-koubo-3ref-stage2-i2v",
   "revision": 0,
   "last_node_id": 329,
   "last_link_id": 646,
@@ -20,7 +20,7 @@
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "title": "口播视频说明",
+      "title": "Stage2 voice no subtitles",
       "properties": {
         "ue_properties": {
           "widget_ue_connectable": {},
@@ -29,7 +29,7 @@
         }
       },
       "widgets_values": [
-        "# 电商口播图生视频（可打开的 UI 工作流）\n\n1. Load Image 请用 Stage1 合成图 `koubo_composed_still_XXXX_.png`\n2. Prompt 里引号中文即口播台词\n3. length 已加长（约 7–8 秒 @25fps）\n"
+        "# ecommerce_koubo_3ref_stage2_i2v\n\nSame openable format as chocolate_mochi_LTX23_I2V.\nHas Mandarin voice + lipsync. No burned-in subtitles.\n"
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -81,10 +81,10 @@
         }
       },
       "widgets_values": [
-        "koubo_composed_still_00002_.png",
+        "koubo_composed_clean_00002_.png",
         "image"
       ],
-      "title": "合成静图"
+      "title": "Composed still"
     },
     {
       "id": 75,
@@ -128,7 +128,7 @@
         }
       },
       "widgets_values": [
-        "video/ecommerce_koubo_3ref_long",
+        "video/ecommerce_koubo_3ref_voice_nosub",
         "auto",
         "auto"
       ]
@@ -1829,7 +1829,7 @@
             "widgets_values": [
               768,
               512,
-              193,
+              161,
               1
             ]
           },
@@ -2479,7 +2479,7 @@
               }
             },
             "widgets_values": [
-              193,
+              161,
               25,
               1
             ]
@@ -3375,7 +3375,7 @@
               }
             },
             "widgets_values": [
-              "Keep the exact same young East Asian woman, face and outfit unchanged. She stands on the sunny green park lawn with soft tree bokeh, holding a white plate of cocoa-dusted chocolate xue mei niang and one cut-open piece showing rich dark chocolate filling. She is a live-commerce host speaking to camera with natural mouth movement, warm smile, small hand gestures presenting the product. She says clearly in Mandarin Chinese: \"宝宝们看过来！这款巧克力雪媚娘，外皮软糯有咬劲，一口咬下去是浓郁巧克力馅，甜而不腻，冷藏更好吃。现在下单超划算，家人朋友都爱吃，快点下单吧！\" Gentle breeze moves hair and clothes. Camera mostly locked with subtle handheld micro-motion. Product stays sharp and appetizing. Vertical smartphone framing, natural daylight, no watermark."
+              "Photorealistic vertical live-commerce video matching the first frame. Keep the same young East Asian woman, stable natural face, no face morph. She stands on a sunny park lawn holding chocolate xue mei niang desserts, smiles warmly, presents the product, and speaks clearly in Mandarin Chinese with natural lip sync: \"宝宝们看过来！这款巧克力雪媚娘外皮软糯，一口咬下去是浓郁巧克力馅，现在下单超划算！\" Clear spoken audio only. Do not render any subtitles, captions, lyrics, lower-thirds, or on-screen text. No watermark, no logo. Soft daylight, clean low-noise image, subtle handheld motion."
             ]
           },
           {
@@ -5057,7 +5057,7 @@
     "VHS_MetadataImage": true,
     "VHS_KeepIntermediate": true,
     "ue_links": [],
-    "workflow_name": "电商口播_Stage2_图生视频"
+    "workflow_name": "ecommerce_koubo_3ref_stage2_i2v"
   },
   "version": 0.4
 }
