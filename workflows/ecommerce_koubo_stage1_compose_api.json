@@ -1,0 +1,104 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "z_image_turbo_bf16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "lumina2",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "5": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": ["1", 0],
+      "shift": 3.0
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "koubo_person_norm.png"
+    }
+  },
+  "7": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "koubo_bg_park_norm.png"
+    }
+  },
+  "8": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "koubo_product_mochi_norm.png"
+    }
+  },
+  "9": {
+    "class_type": "TextEncodeZImageOmni",
+    "inputs": {
+      "clip": ["2", 0],
+      "prompt": "Create a vertical live-commerce product photo. Keep the exact same young East Asian woman from Image 1 (same face, long straight black hair, white asymmetrical off-shoulder blouse, black high-waisted flared trousers, brown belt, black heels, same body proportions). Place her standing on the sunny green park lawn from Image 2, with the same soft tree bokeh background and natural daylight. In her hands, clearly present the chocolate xue mei niang desserts from Image 3: round cocoa-powder-dusted mochi with soft white skin and glossy dark chocolate filling; one piece cut open to show the filling, plus a plate stacked with more of the same desserts. She faces the camera like an e-commerce host, friendly smile, product sharp and appetizing. Photorealistic, full-body vertical smartphone framing, no watermark, no text overlay.",
+      "auto_resize_images": false,
+      "vae": ["3", 0],
+      "image1": ["6", 0],
+      "image2": ["7", 0],
+      "image3": ["8", 0]
+    }
+  },
+  "10": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": ["2", 0],
+      "text": "blurry, low quality, watermark, text, logo, deformed hands, extra fingers, wrong dessert, melted food, face morphing, different person, cartoon, illustration"
+    }
+  },
+  "11": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 576,
+      "height": 1024,
+      "batch_size": 1
+    }
+  },
+  "12": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": ["5", 0],
+      "seed": 123456,
+      "steps": 8,
+      "cfg": 1.0,
+      "sampler_name": "res_multistep",
+      "scheduler": "simple",
+      "positive": ["9", 0],
+      "negative": ["10", 0],
+      "latent_image": ["11", 0],
+      "denoise": 1.0
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["12", 0],
+      "vae": ["3", 0]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["13", 0],
+      "filename_prefix": "koubo_composed_still"
+    }
+  }
+}
